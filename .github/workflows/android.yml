@@ -26,11 +26,11 @@ jobs:
     - name: Generate Gradle Wrapper
       run: gradle wrapper
 
-    - name: Build Debug APK
-      run: ./gradlew assembleDebug --stacktrace
+    - name: Build APK
+      run: ./gradlew assembleDebug --continue || gradle assembleDebug
 
-    - name: Upload APK
+    - name: Upload APK Artifact
       uses: actions/upload-artifact@v4
       with:
-        name: app-debug
+        name: app-debug.apk
         path: '**/build/outputs/apk/debug/*.apk'
